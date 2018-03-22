@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CarDealer\CarDealer.csproj"/>
     <ProjectReference Include="..\ClientService\ClientService.csproj" />
     <ProjectReference Include="..\DataCompression\DataCompression.csproj" />
     <ProjectReference Include="..\FolderFile\FolderFile.csproj" />

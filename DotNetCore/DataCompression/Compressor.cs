@@ -2,43 +2,19 @@
 
 namespace DataCompression
 {
+    // Strategy
     public class Compressor : ICompressor
     {
-        private CompressionType compressionType;
+        private ICompressorAlgo _algo;
 
-        public Compressor(CompressionType type)
+        public Compressor(ICompressorAlgo algo)
         {
-            this.compressionType = type;
+            _algo = algo;
         }
 
         public string Compress(string data)
         {
-            switch (this.compressionType)
-            {
-                case CompressionType.Repetition:
-                    return CompressWithRepetitionAlgo(data);
-                case CompressionType.Entropic:
-                    return CompressWithEntropicAlgo(data);
-                case CompressionType.ByDictionary:
-                    return CompressByDictionaryAlgo(data);
-                default:
-                    return data;
-            }
-        }
-
-        private string CompressByDictionaryAlgo(string data)
-        {
-            throw new NotImplementedException();
-        }
-
-        private string CompressWithEntropicAlgo(string data)
-        {
-            throw new NotImplementedException();
-        }
-
-        private string CompressWithRepetitionAlgo(string data)
-        {
-            throw new NotImplementedException();
+            return _algo.Compress(data);
         }
     }
 }

@@ -1,30 +1,52 @@
 ﻿using System.Collections.Generic;
+using System;
+using System.Globalization;
 
 namespace FolderFile
 {
-    public class Folder
+    public class Folder : IComparable, IElement
     {
         public string Name { get; set; }
-
-        public List<File> Files { get; set; }
         
-        public List<Folder> Folders { get; set; }
+        public List<IElement> FoldersOrFiles { get; set; }
 
         public int GetContainsNumber()
         {
-            int filesCount = 0;
-            if(Files != null)
-            {
-                filesCount = Files.Count;
-            }
-
             int foldersCount = 0;
-            if(Folders != null)
+            if(FoldersOrFiles != null)
             {
-                foldersCount = Folders.Count;
+                foldersCount = FoldersOrFiles.Count;
             }
 
-            return filesCount + foldersCount;
+            return foldersCount;
+        }
+
+        public List<string> GetEveryPath()
+        {
+            List<string> paths = new List<string>();
+            if(!string.IsNullOrEmpty(Name))
+                paths.Add(Name + "/");
+
+            if(FoldersOrFiles != null)
+                foreach(IElement folderOrFile in FoldersOrFiles)
+                {
+                    if(folderOrFile is Folder)
+                        ((Folder)folderOrFile)?.GetEveryPath().ForEach(path => paths.Add(Name + "/" + path));
+                    if(folderOrFile is File)
+                        paths.Add(Name + "/" + folderOrFile.Name);
+                }
+            
+            return paths;
+        }
+
+        public int CompareTo(object obj)
+        {
+            Folder folder = obj as Folder;
+            if(folder == this 
+                || string.Equals(folder.Name, this.Name))
+                return 0;
+            else
+                return - string.Compare(folder.Name, this.Name);
         }
     }
 }

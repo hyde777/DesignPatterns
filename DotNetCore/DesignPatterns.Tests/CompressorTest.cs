@@ -8,6 +8,6 @@ namespace DesignPatterns.Tests
 {
     public class CompressorTest
     {
-
+ 
     }
 }

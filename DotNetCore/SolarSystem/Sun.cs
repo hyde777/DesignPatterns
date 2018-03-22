@@ -8,5 +8,11 @@ namespace SolarSystem
 {
     public class Sun
     {
+        private static Sun sun = new Sun();
+        public static Sun GetInstance()
+        {
+                return sun;
+        }
+        private Sun(){}
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClientService
 {
-    public class Billing
+    public class Billing : IBilling
     {
         public void AddOption(Order order, Option option)
         {

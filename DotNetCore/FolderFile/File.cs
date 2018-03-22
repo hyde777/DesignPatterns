@@ -1,6 +1,6 @@
 ﻿namespace FolderFile
 {
-    public class File
+    public class File : IElement
     {
         public string Name { get; set; }
     }
