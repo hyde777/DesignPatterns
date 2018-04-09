@@ -10,7 +10,7 @@ namespace DesignPatterns.Tests
         [TestMethod]
         public void Should_add_item_into_an_in_progress_order()
         {
-            var order = new Order();
+            IOrder order = new InProgressOrder();
             var item = new Item();
             order.AddItem(item);
             
@@ -21,27 +21,27 @@ namespace DesignPatterns.Tests
         [ExpectedException(typeof(NotSupportedException))]
         public void Should_throw_notSuportedException_when_adding_an_item_into_a_validated_order()
         {
-            var order = new Order();
-            order.NextStatus();
+            var order = new InProgressOrder();
+            var validatedOrder = order.NextStatus();
             var item = new Item();
-            order.AddItem(item);
+            validatedOrder.AddItem(item);
         }
 
         [TestMethod]
         [ExpectedException(typeof(NotSupportedException))]
         public void Should_throw_notSupportedException_when_adding_an_item_into_a_delivered_order()
         {
-            var order = new Order();
-            order.NextStatus();
-            order.NextStatus();
+            var order = new InProgressOrder();
+            IOrder validatedOrder = order.NextStatus();
+            var deliveredOrder = validatedOrder.NextStatus();
             var item = new Item();
-            order.AddItem(item);
+            deliveredOrder.AddItem(item);
         }
         
         [TestMethod]
         public void Should_remove_item_from_the_order_when_it_is_in_progress()
         {
-            var order = new Order();
+            var order = new InProgressOrder();
             var item = new Item();
             order.AddItem(item);
 
@@ -53,10 +53,10 @@ namespace DesignPatterns.Tests
         [TestMethod]
         public void Should_remove_item_from_the_order_when_it_is_validated()
         {
-            var order = new Order();
+            IOrder order = new InProgressOrder();
             var item = new Item();
             order.AddItem(item);
-            order.NextStatus();
+            order = order.NextStatus();
 
             order.RemoveItem(item);
             
@@ -67,9 +67,9 @@ namespace DesignPatterns.Tests
         [ExpectedException(typeof(NotSupportedException))]
         public void Should_throw_notSupportedException_when_remove_an_item_from_a_delivered_order()
         {
-            var order = new Order();
-            order.NextStatus();
-            order.NextStatus();
+            IOrder order = new InProgressOrder();
+            order = order.NextStatus().NextStatus();
+            
             var item = new Item();
             order.RemoveItem(item);
         }

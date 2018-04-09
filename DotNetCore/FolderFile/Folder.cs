@@ -32,7 +32,7 @@ namespace FolderFile
                 {
                     if(folderOrFile is Folder)
                         ((Folder)folderOrFile)?.GetEveryPath().ForEach(path => paths.Add(Name + "/" + path));
-                    if(folderOrFile is File)
+                    else
                         paths.Add(Name + "/" + folderOrFile.Name);
                 }
             

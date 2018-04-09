@@ -30,27 +30,7 @@ namespace DesignPatterns
             
             Assert.AreEqual(2, containsNumber);
         }
-
-        [TestMethod]
-        public void Should_Contains_These_3_Paths()
-        {
-            //Arrange
-            var folder = CreateFolderTree();
-
-            // Act
-            List<string> everyPath = folder.GetEveryPath();
-            string[] rootFolder = everyPath[0].Split('/');
-            string[] rootAndfile = everyPath[1].Split('/');
-            string[] rootAndFolder = everyPath[2].Split('/');
-            
-            // Assert
-            Assert.AreEqual(rootFolder[0], folder.Name);
-            Assert.AreEqual(rootAndfile[0], folder.Name);
-            Assert.AreEqual(rootAndfile[1], "data.txt" );
-            Assert.AreEqual(rootAndFolder[0], folder.Name);
-            Assert.AreEqual(rootAndFolder[1], "Data Folder" );
-        }
-
+        
         [TestMethod]
         public void Should_Sort_3_Empty_Folder()
         {
