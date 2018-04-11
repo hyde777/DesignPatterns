@@ -6,29 +6,31 @@ using System.Threading.Tasks;
 
 namespace Shopping
 {
-    public class ValidatedOrder : IOrder
+    public class Order : IOrder
     {
+        private IOrderStatus status;
         private List<Item> items = new List<Item>();
 
         public List<Item> Items { get => items; }
-
-        public ValidatedOrder(InProgressOrder ipo)
+        
+        public Order()
         {
-            this.items = ipo.Items;
+            status = new InProgressStatus();
         }
+
         public void AddItem(Item item)
         {
-            throw new System.NotSupportedException();
+            status.AddItem(items, item);
         }
 
         public void RemoveItem(Item item)
         {
-            items.Remove(item);
+            status.RemoveItem(items, item);
         }
 
-        public IOrder NextStatus()
+        public void NextStatus()
         {
-            return new DeliveredOrder(this);
+             
         }
     }
 }

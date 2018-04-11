@@ -14,6 +14,6 @@ namespace Shopping
         
         void RemoveItem(Item item);
 
-        IOrder NextStatus();
+        void NextStatus();
     }
 }
