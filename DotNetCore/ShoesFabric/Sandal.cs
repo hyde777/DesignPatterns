@@ -2,9 +2,9 @@
 {
     internal class Sandal : IShoe
     {
-        private ShoeType type;
+        private IType type;
 
-        public Sandal(ShoeType leather)
+        public Sandal(IType leather)
         {
             this.type = leather;
         }

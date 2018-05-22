@@ -4,4 +4,9 @@
     {
         public string Name { get; set; }
     }
+
+    public void Accept(IWriter writer)
+    {
+        writer.Write(this)
+    }
 }

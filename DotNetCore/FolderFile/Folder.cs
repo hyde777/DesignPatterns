@@ -48,5 +48,10 @@ namespace FolderFile
             else
                 return - string.Compare(folder.Name, this.Name);
         }
+
+        public void Accept(IWriter writer)
+        {
+            writer.Write(this)
+        }
     }
 }

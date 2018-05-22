@@ -11,5 +11,10 @@ namespace FolderFile
         {
             _original = original;
         }
+
+        public void Accept(IWriter writer)
+        {
+            writer.Write(this)
+        }
     }
 }

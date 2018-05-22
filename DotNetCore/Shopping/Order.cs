@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shopping
 {
-    public class Order : IOrder, ICloneable<IOrder>
+    public class Order : IOrder, ICloneable<IOrder>, IOriginator
     {
         private IOrderStatus status;
         private List<Item> items = new List<Item>();

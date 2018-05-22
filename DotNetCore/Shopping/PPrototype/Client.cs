@@ -2,15 +2,14 @@ namespace Shopping
 {
     public class Client 
     {
-        Order order;
-        
+        IOrder order;
         public Client()
         {
             order = new Order();
         }
         public void CreateOrderFromAnother()
         {
-            Order newOrder = order.Clone();
+            Order newOrder = duplica.Duplicate(order);
         }
     }
 }
