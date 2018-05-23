@@ -1,6 +1,6 @@
 namespace Shopping
 {
-    public class IOriginator
+    public interface IOriginator
     {
         void SetMemento(Memento memento);
         Memento CreateMemento();

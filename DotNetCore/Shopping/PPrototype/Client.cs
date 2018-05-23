@@ -9,7 +9,7 @@ namespace Shopping
         }
         public void CreateOrderFromAnother()
         {
-            Order newOrder = duplica.Duplicate(order);
+            // Order newOrder = duplica.Duplicate(order);
         }
     }
 }

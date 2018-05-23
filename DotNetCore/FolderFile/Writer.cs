@@ -1,22 +1,25 @@
-public class Writer
+namespace FolderFile
 {
-    void Write(IElement element)
+    public class Writer : IWriter
     {
-        element.Accept(this);
-    }
+        public void Write(IElement element)
+        {
+            element.Accept(this);
+        }
 
-    void Write(Link link)
-    {
-        Console.WriteLine(link.Name);
-    }
+        public void Write(Link link)
+        {
+             // Console.WriteLine(link.Name);
+        }
 
-    void Write(File file)
-    {
-        //
-    }
+        public void Write(File file)
+        {
+            //
+        }
 
-    void Write(Folder folder)
-    {
-        //
+        public void Write(Folder folder)
+        {
+            //
+        }
     }
 }

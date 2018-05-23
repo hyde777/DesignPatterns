@@ -2,6 +2,14 @@ namespace Shopping
 {
     public class Memento
     {
-        IOrderStatus GetState();
+        public Memento(IOrderStatus status)
+        {
+
+        }
+
+        IOrderStatus GetState()
+        {
+            return new OrderStatus();
+        }
     }
 }

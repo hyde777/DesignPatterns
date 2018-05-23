@@ -4,22 +4,22 @@
     {
         public IShoe CreateLeatherShoe()
         {
-            return new StreetShoe(ShoeType.Leather);
+            return new StreetShoe(new Leather());
         }
 
         public IShoe CreateLeatherSandal()
         {
-            return new Sandal(ShoeType.Leather);
+            return new Sandal(new Leather());
         }
 
         public IShoe CreateSyntheticShoe()
         {
-            return new StreetShoe(ShoeType.Synthetic);
+            return new StreetShoe(new Synthetic());
         }
 
         public IShoe CreateSyntheticSandal()
         {
-            return new Sandal(ShoeType.Synthetic);
+            return new Sandal(new Synthetic());
         }
     }
 }

@@ -51,7 +51,7 @@ namespace FolderFile
 
         public void Accept(IWriter writer)
         {
-            writer.Write(this)
+            writer.Write(this);
         }
     }
 }

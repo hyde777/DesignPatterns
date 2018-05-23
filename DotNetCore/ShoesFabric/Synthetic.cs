@@ -2,6 +2,8 @@
 {
     public class Synthetic : IType
     {
-        
+        public Synthetic()
+        {
+        }
     }
 }
