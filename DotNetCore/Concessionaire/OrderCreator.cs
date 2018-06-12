@@ -3,15 +3,11 @@ using System.Collections.Generic;
 
 namespace Concessionaire
 {
-    public class OrderCreator
+    public class SpotOrderCreator : OrderCreator
     {
-        Dictionary<EPaymentType, Func<IOrder>> registry;
-        
-        public OrderCreator(Dictionary<EPaymentType, Func<IOrder>> registry)
+        public override IOrder CreateOrder()
         {
-            this.registry = registry;
+            return new SpotOrder();
         }
-
-        public IOrder CreateOrder(EPaymentType paymentType) => registry[paymentType]();
     }
 }
