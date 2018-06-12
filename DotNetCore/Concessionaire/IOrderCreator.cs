@@ -3,15 +3,9 @@ using System.Collections.Generic;
 
 namespace Concessionaire
 {
-    public class OrderCreator
+    public interface IOrderCreator
     {
-        Dictionary<EPaymentType, Func<IOrder>> registry;
-        
-        public OrderCreator(Dictionary<EPaymentType, Func<IOrder>> registry)
-        {
-            this.registry = registry;
-        }
-
-        public IOrder CreateOrder(EPaymentType paymentType) => registry[paymentType]();
+        IOrder CreateOrder();
+        void CreateNewOrder() ;
     }
 }

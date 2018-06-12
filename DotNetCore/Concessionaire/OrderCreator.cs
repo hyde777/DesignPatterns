@@ -3,11 +3,18 @@ using System.Collections.Generic;
 
 namespace Concessionaire
 {
-    public class SpotOrderCreator : OrderCreator
+    public class OrderCreator<O>: IOrderCreator where O : IOrder, new()
     {
-        public override IOrder CreateOrder()
+        public void CreateNewOrder(){
+            IOrder order = CreateOrder();
+            if(order.IsValid())
+            {
+                order.Pay();
+            }
+        }
+        public IOrder CreateOrder()
         {
-            return new SpotOrder();
+            return new O();
         }
     }
 }
